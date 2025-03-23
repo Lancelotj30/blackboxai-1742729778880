@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTPBot SMS</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="w-80 bg-gray-50 font-sans">
+    <div class="p-4">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-xl font-semibold text-gray-800">
+                <i class="fas fa-key text-blue-500 mr-2"></i>OTPBot SMS
+            </h1>
+        </div>
+
+        <!-- OTP Display Section -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+            <div class="text-sm text-gray-600 mb-2">Current OTP</div>
+            <div id="otpDisplay" class="text-2xl font-semibold text-gray-800 tracking-wider text-center py-2">
+                ------
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="fetchOTP" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+            <i class="fas fa-sync-alt mr-2"></i>
+            Fetch OTP
+        </button>
+
+        <!-- Status Messages -->
+        <div id="statusMessage" class="mt-4 text-sm hidden">
+            <div class="success hidden text-green-600 bg-green-50 p-3 rounded-lg">
+                <i class="fas fa-check-circle mr-2"></i>
+                <span>OTP captured successfully!</span>
+            </div>
+            <div class="error hidden text-red-600 bg-red-50 p-3 rounded-lg">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span>Error message here</span>
+            </div>
+        </div>
+
+        <!-- Manual Entry Section -->
+        <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="text-sm text-gray-600 mb-2">Manual Entry</div>
+            <div class="flex gap-2">
+                <input type="text" id="manualOTP" 
+                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter OTP manually">
+                <button id="applyManualOTP" 
+                    class="px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-colors duration-200">
+                    <i class="fas fa-check"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
