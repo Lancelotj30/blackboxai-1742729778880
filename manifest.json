@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "OTPBot SMS",
+  "version": "1.0.0",
+  "description": "Automatically intercepts and fills OTP codes from SMS messages",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["contentScript.js"]
+  }],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; script-src-elem 'none'; object-src 'none'"
+  },
+  "options_page": "options/options.html"
+}
