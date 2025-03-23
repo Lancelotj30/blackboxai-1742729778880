@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTPBot SMS Settings</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="max-w-2xl mx-auto p-6">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-2xl font-semibold text-gray-800 flex items-center">
+                <i class="fas fa-cog text-blue-500 mr-3"></i>
+                OTPBot SMS Settings
+            </h1>
+            <p class="text-gray-600 mt-2">Configure advanced options for OTP handling</p>
+        </div>
+
+        <!-- Settings Form -->
+        <form id="settingsForm" class="bg-white rounded-lg shadow-sm p-6">
+            <!-- OTP Timeout Setting -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    OTP Timeout Duration (seconds)
+                </label>
+                <div class="flex items-center">
+                    <input type="number" 
+                           id="otpTimeout" 
+                           min="10" 
+                           max="300" 
+                           class="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           value="60">
+                    <span class="ml-2 text-sm text-gray-500">seconds</span>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">Time to wait for OTP before timeout (10-300 seconds)</p>
+            </div>
+
+            <!-- Auto-fill Toggle -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    Auto-fill Behavior
+                </label>
+                <div class="flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" 
+                               id="autoFillEnabled" 
+                               class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-700">Enable automatic OTP fill</span>
+                    </label>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">Automatically fill detected OTP fields when code is received</p>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    Notifications
+                </label>
+                <div class="space-y-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" 
+                               id="notifySuccess" 
+                               class="rounded text-blue-500 focus:ring-blue-500 h-4 w-4">
+                        <span class="ml-2 text-sm text-gray-700">Show success notifications</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" 
+                               id="notifyError" 
+                               class="rounded text-blue-500 focus:ring-blue-500 h-4 w-4">
+                        <span class="ml-2 text-sm text-gray-700">Show error notifications</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="mt-8">
+                <button type="submit" 
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                    <i class="fas fa-save mr-2"></i>
+                    Save Settings
+                </button>
+            </div>
+        </form>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="mt-4 text-sm hidden">
+            <div class="success hidden text-green-600 bg-green-50 p-3 rounded-lg">
+                <i class="fas fa-check-circle mr-2"></i>
+                <span>Settings saved successfully!</span>
+            </div>
+            <div class="error hidden text-red-600 bg-red-50 p-3 rounded-lg">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span>Error saving settings</span>
+            </div>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>
